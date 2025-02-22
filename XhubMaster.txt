@@ -1,0 +1,32 @@
+loadstring(game:HttpGet("https://scriptblox.com/raw/Blox-Fruits-w-azure-hub-10114"))()
+
+
+       local Window = MakeWindow({
+         Hub = {
+         Title = "X hub master",
+         Animation = "Shade-Vex"
+         },
+        Key = {
+        KeySystem = true,
+        Title = "đăng kí cho Shade-Vex ngay",
+        Description = "dán key vào đây",
+        KeyLink = "https://discord.gg/DmN8sE7Y",
+        Keys = {"Premium_Key_#999"},
+        Notifi = {
+        Notifications = true,
+        CorrectKey = "Running the Script...",
+       Incorrectkey = "The key is incorrect",
+       CopyKeyLink = "Copied to Clipboard"
+      }
+    }
+  })
+
+
+       MinimizeButton({
+       Image = "http://www.roblox.com/asset/?id=123776424679172",
+       Size = {50, 50},
+       Color = Color3.fromRGB(10, 10, 10),
+       Corner = true,
+       Stroke = false,
+       StrokeColor = Color3.fromRGB(255, 0, 0)
+      })
