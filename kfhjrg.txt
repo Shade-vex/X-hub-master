@@ -268,26 +268,26 @@ local function createESP(player)
 
     local billboard = Instance.new("BillboardGui")
     billboard.Adornee = character.HumanoidRootPart
-    billboard.Size = UDim2.new(20, 0, 5, 0) -- Kích thước cố định
-    billboard.StudsOffset = Vector3.new(0, 0, 0) -- Đặt giữa nhân vật
+    billboard.Size = UDim2.new(0, 200, 0, 50) -- Giữ kích thước to rõ ràng (tương ứng với 20)
+    billboard.StudsOffset = Vector3.new(0, 0, 0) -- Ở giữa nhân vật
     billboard.AlwaysOnTop = true
 
-    local textLabel = Instance.new("TextLabel", billboard)
-    textLabel.Size = UDim2.new(1, 0, 1, 0)
+    local textLabel = Instance.new("TextLabel")
+    textLabel.Size = UDim2.new(1, 0, 1, 0) -- Đảm bảo chữ luôn to rõ
     textLabel.BackgroundTransparency = 1
     textLabel.TextColor3 = Color3.new(1, 0, 0) -- Màu đỏ
     textLabel.TextScaled = true
     textLabel.Font = Enum.Font.SourceSansBold
     textLabel.TextStrokeTransparency = 0.2 -- Viền chữ giúp dễ nhìn hơn
+    textLabel.Parent = billboard
 
     billboard.Parent = character.HumanoidRootPart
 
-    -- Cập nhật vị trí & thông tin máu
+    -- Cập nhật thông tin
     spawn(function()
         while espEnabled and character and character:FindFirstChild("Humanoid") and character:FindFirstChild("HumanoidRootPart") do
             local humanoid = character:FindFirstChild("Humanoid")
-            local distance = (game.Players.LocalPlayer.Character.HumanoidRootPart.Position - character.HumanoidRootPart.Position).Magnitude
-            textLabel.Text = string.format("[%s] HP: %d | %dm", player.Name, math.floor(humanoid.Health), math.floor(distance))
+            textLabel.Text = string.format("[%s] HP: %d", player.Name, math.floor(humanoid.Health))
             wait(0.2)
         end
         billboard:Destroy()
@@ -398,6 +398,11 @@ end
 
 -- Nút bật/tắt ESP Trái Ác Quỷ
 AddButton(Tab9o, {
+    Name = "ESP Trái Ác Quỷ",
+    Callback = function()
+        toggleFruitESP()
+    end
+}) {
     Name = "ESP Trái Ác Quỷ",
     Callback = function()
         toggleFruitESP()
